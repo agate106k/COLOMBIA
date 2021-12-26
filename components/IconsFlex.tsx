@@ -10,7 +10,7 @@ export default function IconsFlex () {
     return (
         <View style={styles.list}>
             {messages_list.map((user)=>(
-                <ListItem key={user.id} bottomDivider>
+                <ListItem key={user.id} bottomDivider >
                     <Avatar rounded source={user.pic} />
                         <ListItem.Title style={styles.title}>{user.title}</ListItem.Title>
                         <ListItem.Subtitle style={styles.subtitle}>{user.message}</ListItem.Subtitle>

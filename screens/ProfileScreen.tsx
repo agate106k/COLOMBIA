@@ -2,7 +2,6 @@ import {Image, StyleSheet} from "react-native";
 import {Text, View} from "../components/Themed";
 
 export default function ProfileScreen() {
-
     return (
         <View style={styles.container}>
             <Image style={styles.profilePic} source={require('../assets/images/matching-app-icon.png')} />

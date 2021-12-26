@@ -22,13 +22,6 @@ function App (props: Props) {
   };
   return(
     <View style={styles.container}>
-      {/*<TextInput style={styles.input} value={name} onChangeText={newValue=>setName(newValue)}/>*/}
-      {/*<Text style={styles.title}>{name}さん、Google DSC Cloud Leagueへようこそ！</Text>*/}
-      {/*<View style={styles.separator} lightColor="#114c4b" darkColor="rgba(255,255,255,0.1)" />*/}
-      {/*<EditScreenInfo path="/screens/TabOneScreen.tsx" />*/}
-      {/*<Text style={{color}}>頑張りましょう。</Text>*/}
-      {/*<Switch value={value} onValueChange={onValueChange} />*/}
-      {/*<CounterText count={10} />*/}
       <IconsFlex />
     </View>
 

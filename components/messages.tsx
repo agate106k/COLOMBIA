@@ -12,7 +12,7 @@ export const messages_list: Partial<Messages>[] = [
         id: 1,
         pic: require('../assets/images/matching-app-icon.png'),
         title: 'JS太郎',
-        message: "TS二郎と俺なら、どっちが好き？",
+        message: "React NativeではTSを使ってね🥺",
     },
     {
         id:2,

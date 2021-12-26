@@ -5,7 +5,7 @@ type Messages = {
     message: string;
 };
 
-const messages_list: Partial<Messages>[] = [
+export const messages_list: Partial<Messages>[] = [
     {
         id: 1,
         pic: require('../assets/images/matching-app-icon.png'),
@@ -20,8 +20,5 @@ const messages_list: Partial<Messages>[] = [
     },
 ];
 
-messages_list.map((user)=>(
-    console.log(user.id)
-    )
 
-)
+
