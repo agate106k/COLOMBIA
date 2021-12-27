@@ -8,14 +8,14 @@ import {members_list} from "./members";
 export default class HomeScreen extends React.Component {
     render() {
         return (
-            <SafeAreaView style={styles.container}>
+            <View style={styles.container}>
                 <Swiper style={styles.wrapper} showsButtons loop={true}>
                     {
                         members_list.map((data) => {
-                            return (<ProfileCard id={data.id} pic={data.pic} name={data.name} desc={data.desc} />)})
+                            return (<ProfileCard key="{data}" id={data.id} pic={data.pic} name={data.name} desc={data.desc} />)})
                     }
                 </Swiper>
-            </SafeAreaView>
+            </View>
         )
     }
 }
