@@ -1,6 +1,5 @@
 import {SafeAreaView, StyleSheet, Switch, TextInput} from 'react-native';
 
-import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
 import React from "react";
@@ -42,7 +41,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#FFF',
+    backgroundColor: '#444',
   },
   title: {
     fontSize: 20,

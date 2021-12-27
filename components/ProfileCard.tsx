@@ -1,6 +1,6 @@
 import React from "react";
-import {Button, StyleSheet, Text, View} from "react-native";
-import {Avatar} from "react-native-elements";
+import {StyleSheet, Text, View} from "react-native";
+import {Avatar, Button} from "react-native-elements";
 
 // type Props = {
 //     id: number,

@@ -16,7 +16,7 @@ export const messages_list: Partial<Messages>[] = [
     },
     {
         id:2,
-        pic: require('../assets/images/favicon.png'),
+        pic: require('../assets/images/matching-app-red.png'),
         title: 'React花子',
         message: "CSS完全に理解した",
     },

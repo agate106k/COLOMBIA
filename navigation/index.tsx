@@ -1,3 +1,4 @@
+
 /**
  * If you are not familiar with React Navigation, refer to the "Fundamentals" guide:
  * https://reactnavigation.org/docs/getting-started
@@ -20,13 +21,13 @@ import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../typ
 import LinkingConfiguration from './LinkingConfiguration';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
-  return (
-    <NavigationContainer
-      linking={LinkingConfiguration}
-      theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <RootNavigator />
-    </NavigationContainer>
-  );
+    return (
+        <NavigationContainer
+            linking={LinkingConfiguration}
+            theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+            <RootNavigator />
+        </NavigationContainer>
+    );
 }
 
 /**
@@ -36,15 +37,15 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
-      <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
-      <Stack.Group screenOptions={{ presentation: 'modal' }}>
-        <Stack.Screen name="Profile" component={ProfileScreen} />
-      </Stack.Group>
-    </Stack.Navigator>
-  );
+    return (
+        <Stack.Navigator>
+            <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
+            <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
+            <Stack.Group screenOptions={{ presentation: 'modal' }}>
+                <Stack.Screen name="Profile" component={ProfileScreen} />
+            </Stack.Group>
+        </Stack.Navigator>
+    );
 }
 
 /**
@@ -54,54 +55,54 @@ function RootNavigator() {
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
 
 function BottomTabNavigator() {
-  const colorScheme = useColorScheme();
+    const colorScheme = useColorScheme();
 
-  return (
-    <BottomTab.Navigator
-      initialRouteName="TabOne"
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme].tint,
-      }}>
-      <BottomTab.Screen
-        name="TabOne"
-        component={TabOneScreen}
-        options={({ navigation }: RootTabScreenProps<'TabOne'>) => ({
-          title: 'Home',
-          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
-          headerRight: () => (
-            <Pressable
-              onPress={() => navigation.navigate('Profile')}
-              style={({ pressed }) => ({
-                opacity: pressed ? 0.5 : 1,
-              })}>
-              <FontAwesome
-                name="info-circle"
-                size={25}
-                color={Colors[colorScheme].text}
-                style={{ marginRight: 15 }}
-              />
-            </Pressable>
-          ),
-        })}
-      />
-      <BottomTab.Screen
-        name="TabTwo"
-        component={TabTwoScreen}
-        options={{
-          title: 'Random',
-          tabBarIcon: ({ color }) => <TabBarIcon name="refresh" color={color} />,
-        }}
-      />
-    </BottomTab.Navigator>
-  );
+    return (
+        <BottomTab.Navigator
+            initialRouteName="TabOne"
+            screenOptions={{
+                tabBarActiveTintColor: Colors[colorScheme].tint,
+            }}>
+            <BottomTab.Screen
+                name="TabOne"
+                component={TabOneScreen}
+                options={({ navigation }: RootTabScreenProps<'TabOne'>) => ({
+                    title: 'Home',
+                    tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
+                    headerRight: () => (
+                        <Pressable
+                            onPress={() => navigation.navigate('Profile')}
+                            style={({ pressed }) => ({
+                                opacity: pressed ? 0.5 : 1,
+                            })}>
+                            <FontAwesome
+                                name="user"
+                                size={25}
+                                color={Colors[colorScheme].text}
+                                style={{ marginRight: 15 }}
+                            />
+                        </Pressable>
+                    ),
+                })}
+            />
+            <BottomTab.Screen
+                name="TabTwo"
+                component={TabTwoScreen}
+                options={{
+                    title: 'Random',
+                    tabBarIcon: ({ color }) => <TabBarIcon name="refresh" color={color} />,
+                }}
+            />
+        </BottomTab.Navigator>
+    );
 }
 
 /**
  * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
  */
 function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name'];
-  color: string;
+    name: React.ComponentProps<typeof FontAwesome>['name'];
+    color: string;
 }) {
-  return <FontAwesome size={30} style={{ marginBottom: -3 }} {...props} />;
+    return <FontAwesome size={30} style={{ marginBottom: -3 }} {...props} />;
 }
