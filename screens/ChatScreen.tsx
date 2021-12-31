@@ -1,9 +1,9 @@
-import React, { useCallback, useState, useEffect } from 'react'
+import React, { useCallback, useState, useEffect, useLayoutEffect } from 'react'
 import {GiftedChat, QuickReplies, User} from 'react-native-gifted-chat'
 import {db} from "../firebase";
-import { collection, addDoc, query, getFirestore, orderBy, limit } from 'firebase/firestore/lite';
+import { collection, addDoc, getDocs, query, orderBy} from 'firebase/firestore/lite';
 import { onSnapshot } from 'firebase/firestore'
-import {Alert} from "react-native";
+import {Text} from "react-native";
 
 // declare the type of each message
 interface IMessage {
@@ -58,7 +58,40 @@ export function MessageFunc() {
             text: text,
             user: user,
         })
+
+
     }, [])
+    // useLayoutEffect(() => {
+        //データを指定
+        //クエリを作成
+        //
+
+        // const unsubscribe = onSnapshot(q, querySnapshot => {
+        //     setMessages(
+        //         querySnapshot.docs.map(doc => ({
+        //             _id: doc.data()._id,
+        //             createdAt: doc.data().createdAt.toDate(),
+        //             text: doc.data().text,
+        //             user: doc.data().user
+        //         }))
+        //     );
+        // });
+
+        async function CheckMessages() {
+            const collectionRef = collection(db, 'users');
+            const q = query(collectionRef, orderBy('createdAt', 'desc'));
+            const docSnap = await getDocs(q);
+            docSnap.forEach((doc) =>
+            {setMessages(previousMessages => GiftedChat.append(previousMessages, doc.data()))});
+            // return (
+            //     {id: docSnap.data().id}
+            // );
+        }
+
+        CheckMessages()
+
+        // console.log(unsubscribe());
+    // });
 
     return (
         <GiftedChat
@@ -66,10 +99,31 @@ export function MessageFunc() {
             onSend={messages => onSend(messages)}
             user={{
                 _id: 1,
+                name: 'React Native',
+                avatar: 'https://placeimg.com/140/140/any',
             }}
         />
+
     )
 
 }
+
+
+// function LoadMessages() {
+//     // Create the query to load the last 12 messages and listen for new ones.
+//     const recentMessagesQuery = query(collection(getFirestore(), 'messages'), orderBy('timestamp', 'desc'), limit(12));
+//
+//     // Start listening to the query.
+//     onSnapshot(recentMessagesQuery, function(snapshot) {
+//         snapshot.docChanges().forEach(function(change) {
+//             if (change.type === 'removed') {
+//                 // deleteMessage(change.doc.id);
+//             } else {
+//                 let message = change.doc.data();
+//                 messages_list.append(message.createdAt, message.text, message.user);
+//             }
+//         });
+//     });
+// }
 
 

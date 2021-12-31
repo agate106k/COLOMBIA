@@ -1,11 +1,10 @@
 import {collection, getFirestore, limit, orderBy, query} from "firebase/firestore/lite";
 import {onSnapshot} from "firebase/firestore";
-
-
+import {User} from "react-native-gifted-chat";
 
 
 //直近のメッセージを読み込み
-function loadMessages() {
+export function LoadMessages() {
     // Create the query to load the last 12 messages and listen for new ones.
     const recentMessagesQuery = query(collection(getFirestore(), 'messages'), orderBy('timestamp', 'desc'), limit(12));
 
